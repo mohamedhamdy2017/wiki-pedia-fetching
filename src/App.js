@@ -29,8 +29,8 @@ export default class LaunchScreen extends Component {
             <CardItem >
               <Body style={{backgroundColor: '#eee', borderWidth:0.4}} >
               <Text style={{margin: 10, fontWeight: 'bold'}}>{item}</Text>
-                <TouchableOpacity onPress ={() => Linking.openURL(this.state.Link)}>
-                    <Text style={{margin: 10}}>{this.state.discription}</Text>
+                <TouchableOpacity onPress ={() => Linking.openURL(this.state.Link[3])}>
+                    <Text style={{margin: 10}}>{this.state.discription[2]}</Text>
                 </TouchableOpacity>
               </Body>
             </CardItem>    
