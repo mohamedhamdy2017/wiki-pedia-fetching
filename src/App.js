@@ -13,10 +13,10 @@ export default class LaunchScreen extends Component {
     }
     
     onTyping = (search) => {
+        this.setState({loading: true})
         fetch(`https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=${search}`)
             .then(response => response.json())
             .then(result => this.setState({
-                loading: true,
                 data: result[1],
                 discription: result[2],
                 Link: result[3],
@@ -25,12 +25,12 @@ export default class LaunchScreen extends Component {
     }
    
     
-    renderItem = ({item}) => (
+    renderItem = ({item, index}) => (
             <CardItem >
               <Body style={{backgroundColor: '#eee', borderWidth:0.4}} >
               <Text style={{margin: 10, fontWeight: 'bold'}}>{item}</Text>
-                <TouchableOpacity onPress ={() => Linking.openURL(this.state.Link[3])}>
-                    <Text style={{margin: 10}}>{this.state.discription[2]}</Text>
+                <TouchableOpacity onPress ={() => Linking.openURL(this.state.Link[index])}>
+                    <Text style={{margin: 10}}>{this.state.discription[index]}</Text>
                 </TouchableOpacity>
               </Body>
             </CardItem>    
@@ -47,7 +47,7 @@ export default class LaunchScreen extends Component {
                     onChangeText={this.onTyping}
                 />
                 {loading? 
-                <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+                <View style={{flex: 1, alignItems:'center',justifyContent:'center'}}>
                     <ActivityIndicator size="large" color={'#9bfb8c'} />
                 </View>:
                 <FlatList
