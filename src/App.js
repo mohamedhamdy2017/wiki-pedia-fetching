@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { FlatList, Text, View, TouchableOpacity, ActivityIndicator, Linking } from 'react-native'
-// Styles
 import { CardItem, Body } from 'native-base'
 import { SearchBar } from 'react-native-elements'
 
